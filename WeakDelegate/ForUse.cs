@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace WeakDelegate
 {
-    public class Program
+    public class ForUse
     {
-        static void Main(string[] args)
+        public string Info;
+
+        public ForUse()
         {
+            Info = "Object created at " + DateTime.Now.ToString();
         }
     }
 }
