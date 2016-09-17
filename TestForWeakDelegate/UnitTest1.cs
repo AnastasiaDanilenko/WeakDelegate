@@ -13,7 +13,12 @@ namespace TestForWeakDelegate
             string right = "Object created at " + DateTime.Now.ToString();
             string have = new ForUse().Info;
             StringAssert.Equals(right, have);
+        }
 
+        [TestMethod]
+        public void TestToCreateWeakDelegate()
+        {
+            
         }
     }
 }
