@@ -7,6 +7,11 @@ namespace TestForWeakDelegate
     [TestClass]
     public class UnitTest1
     {
+        private static ForUse FU = new ForUse();
+        public delegate void someDelegate(params object[] some);
+        public event someDelegate Completed;
+        public Wrapper wr = null;
+
         [TestMethod]
         public void TestObjectForWork()
         {
@@ -18,7 +23,8 @@ namespace TestForWeakDelegate
         [TestMethod]
         public void TestToCreateWeakDelegate()
         {
-            
+            wr = new Wrapper((Action<int>)FU.Handler);
+            WeakReference wref += new Wrapper(FU.Handler).weakref;
         }
     }
 }
