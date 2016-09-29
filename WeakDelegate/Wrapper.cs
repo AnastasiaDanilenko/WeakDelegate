@@ -11,20 +11,14 @@ namespace WeakDelegate
         public MethodInfo mi;
         public Delegate someinf
         {
-            get;
-            private set;
+            get
+            { return GetDelegate(); }
         }
 
         public Wrapper(Delegate somedelegate)
         {
             weakref = new WeakReference(somedelegate.Target);
             mi = somedelegate.Method;
-        }
-
-        public void ReturnDelegate()
-        {
-            if (weakref.IsAlive)
-                someinf = mi.CreateDelegate(mi.GetType());
         }
 
         public Delegate GetDelegate()

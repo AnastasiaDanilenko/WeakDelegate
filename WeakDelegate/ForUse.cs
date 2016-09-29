@@ -16,10 +16,23 @@ namespace WeakDelegate
             Info = "Object created at " + DateTime.Now.ToString();
         }
 
-        public void Handler(params object[] someInt)
+        public void Handler(int param1)
         {
-            for (int i = 0; i < someInt.Count(); i++)
-                Console.WriteLine(someInt[i]);
+            Console.WriteLine(Info);
+            Console.WriteLine("Parameters:" + param1.ToString());
         }
+
+        public void Handler(int param1, double param2)
+        {
+            Console.WriteLine(Info);
+            Console.WriteLine("Parameters:" + param1.ToString() + param2.ToString());
+        }
+
+        public void Handler(int param1, double param2, int param3)
+        {
+            Console.WriteLine(Info);
+            Console.WriteLine("Parameters:" + param1.ToString() + param2.ToString() + param3.ToString());
+        }
+
     }
 }

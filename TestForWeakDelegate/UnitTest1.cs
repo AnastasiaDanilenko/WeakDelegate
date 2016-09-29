@@ -8,8 +8,6 @@ namespace TestForWeakDelegate
     public class UnitTest1
     {
         private static ForUse FU = new ForUse();
-        public delegate void someDelegate(params object[] some);
-        public event someDelegate Completed;
         public Wrapper wr = null;
 
         [TestMethod]
@@ -24,7 +22,22 @@ namespace TestForWeakDelegate
         public void TestToCreateWeakDelegate()
         {
             wr = new Wrapper((Action<int>)FU.Handler);
-            WeakReference wref += new Wrapper(FU.Handler).weakref;
+            Source source = new Source();
+            source.OneArgument += (Action<int>)wr.someinf;
+            bool correct = true;
+            bool result = wr.weakref.IsAlive;
+            Assert.AreEqual(correct, result);
+        }
+
+        [TestMethod]
+        public void TestToCreateWeakDelegateWithMoreParameters()
+        {
+            wr = new Wrapper((Action<int, double>)FU.Handler);
+            Source source = new Source();
+            source.TwoArguments += (Action<int, double>)wr.someinf;
+            bool correct = true;
+            bool result = wr.weakref.IsAlive;
+            Assert.AreEqual(correct, result);
         }
     }
 }
